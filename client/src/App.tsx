@@ -1,42 +1,40 @@
+import { useState } from "react";
+import { Route, Switch } from "wouter";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { ThemeProvider } from "./contexts/ThemeContext";
+import { CartDrawer, SiteFooter, SiteHeader } from "./components/veloura";
 import Home from "./pages/Home";
+import Shop from "./pages/Shop";
+import { Book, CustomWig, ProductDetail, SimplePage } from "./pages/DetailPages";
+import NotFound from "./pages/NotFound";
+import { CartProvider } from "./lib/store";
+import { ThemeProvider } from "./contexts/ThemeContext";
+
+function Page({ children }: { children: React.ReactNode }) {
+  const [cartOpen, setCartOpen] = useState(false);
+  return <><SiteHeader onCart={() => setCartOpen(true)} />{children}<SiteFooter /><CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} /></>;
+}
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
-  return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
-  );
+  return <Switch>
+    <Route path="/"><Page><Home /></Page></Route>
+    <Route path="/shop"><Page><Shop /></Page></Route>
+    <Route path="/product/:slug"><Page><ProductDetail /></Page></Route>
+    <Route path="/book"><Page><Book /></Page></Route>
+    <Route path="/custom"><Page><CustomWig /></Page></Route>
+    <Route path="/about"><Page><SimplePage type="about" /></Page></Route>
+    <Route path="/contact"><Page><SimplePage type="contact" /></Page></Route>
+    <Route path="/account"><Page><SimplePage type="account" /></Page></Route>
+    <Route path="/admin"><Page><SimplePage type="admin" /></Page></Route>
+    <Route path="/shipping"><Page><SimplePage type="shipping" /></Page></Route>
+    <Route path="/care"><Page><SimplePage type="care" /></Page></Route>
+    <Route path="/faq"><Page><SimplePage type="faq" /></Page></Route>
+    <Route path="/404" component={NotFound} />
+    <Route component={NotFound} />
+  </Switch>;
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
-function App() {
-  return (
-    <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
-  );
+export default function App() {
+  return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster /><CartProvider><Router /></CartProvider></TooltipProvider></ThemeProvider></ErrorBoundary>;
 }
-
-export default App;

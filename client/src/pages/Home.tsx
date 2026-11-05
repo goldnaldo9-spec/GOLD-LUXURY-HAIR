@@ -1,25 +1,20 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { ArrowDown, ArrowRight, CalendarDays, Check, Instagram, Mail, Play, Quote, Scissors, ShieldCheck, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { Link } from "wouter";
+import { ProductCard, SectionHeading, TrustStrip } from "@/components/veloura";
+import { products, testimonials } from "@/lib/catalog";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
-
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
-    </div>
-  );
+  const [subscribed, setSubscribed] = useState(false);
+  return <main>
+    <section className="hero-section"><div className="hero-image" /><div className="hero-wash" /><div className="hero-content page-wrap"><div className="eyebrow light">The private edit · Est. 2026</div><h1>Hair,<br /><em>considered.</em></h1><p className="hero-copy">Premium human hair and made-to-measure wigs for women who want quiet luxury with unmistakable presence.</p><div className="hero-actions"><Link href="/shop" className="button button-light">Shop the collection <ArrowRight size={16} /></Link><Link href="/book" className="hero-text-link">Book a private consultation <ArrowDown size={15} /></Link></div></div><div className="hero-note">G / 01<br /><span>THE ATELIER EDIT</span></div><div className="hero-scroll"><span>Scroll to explore</span><span className="scroll-line" /></div></section>
+    <TrustStrip />
+    <section className="intro-section page-wrap"><div className="intro-index">01 <span>—</span> THE ATELIER</div><div className="intro-main"><div className="eyebrow">A softer kind of statement</div><h2>Made to move<br /><em>with you.</em></h2></div><div className="intro-copy"><p>GOLD LUXURY HAIR is a considered collection of human hair and luxury wigs, selected for their natural movement, enduring quality, and the feeling they leave behind.</p><Link href="/about" className="text-link">Discover our story <ArrowRight size={15} /></Link></div></section>
+    <section className="collection-section page-wrap" id="collections"><SectionHeading eyebrow="02 · The collection" title="The signature edit" copy="Pieces with presence, chosen for the way they live in the real world." link={{ label: "View all pieces", href: "/shop" }} /><div className="product-grid featured-grid">{products.slice(0, 3).map((product) => <ProductCard product={product} key={product.id} />)}</div></section>
+    <section className="split-story"><div className="split-image split-image-dark"><div className="image-caption">The atelier / 01</div></div><div className="split-copy"><div className="eyebrow">03 · The GOLD LUXURY HAIR standard</div><h2>Not just hair.<br /><em>A point of view.</em></h2><p>We believe the best pieces disappear into your life — then make everything else feel a little more intentional. Every texture is assessed by hand, every finish is chosen for movement, and every client is met where she is.</p><Link href="/about" className="button button-outline">The GOLD LUXURY HAIR standard <ArrowRight size={16} /></Link><div className="split-stats"><div><strong>01</strong><span>One-to-one<br />consultations</span></div><div><strong>02</strong><span>Curated<br />textures</span></div><div><strong>03</strong><span>Worldwide<br />delivery</span></div></div></div></section>
+    <section className="service-section page-wrap"><SectionHeading eyebrow="04 · Made for you" title="More than a purchase" copy="Because the right piece is personal." /><div className="service-grid"><Link href="/book" className="service-card service-card-dark"><div className="service-number">01 / 03</div><CalendarDays size={28} strokeWidth={1.2} /><h3>Private consultation</h3><p>Find the texture, length and finish that feel like you — with an expert eye.</p><span>Book your time <ArrowRight size={15} /></span></Link><Link href="/custom" className="service-card"><div className="service-number">02 / 03</div><Scissors size={28} strokeWidth={1.2} /><h3>Made-to-measure</h3><p>A custom wig, considered from lace to length and finished around your life.</p><span>Start your request <ArrowRight size={15} /></span></Link><Link href="/care" className="service-card"><div className="service-number">03 / 03</div><Sparkles size={28} strokeWidth={1.2} /><h3>Care, continued</h3><p>Guidance that keeps every piece looking and feeling beautiful for longer.</p><span>Explore care <ArrowRight size={15} /></span></Link></div></section>
+    <section className="testimonial-section"><div className="page-wrap"><div className="eyebrow">05 · From the clients</div><div className="testimonial-layout"><Quote size={40} strokeWidth={1} /><div className="testimonial-quote">{testimonials[0].quote}</div><div className="testimonial-meta"><strong>{testimonials[0].name}</strong><span>{testimonials[0].role} · {testimonials[0].product}</span></div><div className="testimonial-dots"><span className="active" /><span /><span /></div></div></div></section>
+    <section className="journal-section page-wrap"><SectionHeading eyebrow="06 · The journal" title="Notes from the atelier" link={{ label: "Read the journal", href: "/about" }} /><div className="journal-grid"><article className="journal-card journal-card-large"><div className="journal-image journal-image-1"><span>Journal 01</span></div><div className="journal-meta"><span>Care notes</span><h3>How to keep your texture feeling like day one.</h3><Link href="/care">Read the note <ArrowRight size={14} /></Link></div></article><article className="journal-card"><div className="journal-image journal-image-2"><span>Journal 02</span></div><div className="journal-meta"><span>The GOLD LUXURY HAIR edit</span><h3>Choosing the right length for your everyday.</h3><Link href="/about">Read the note <ArrowRight size={14} /></Link></div></article><article className="journal-card"><div className="journal-image journal-image-3"><span>Journal 03</span></div><div className="journal-meta"><span>Behind the chair</span><h3>A closer look at our made-to-measure process.</h3><Link href="/custom">Read the note <ArrowRight size={14} /></Link></div></article></div></section>
+    <section className="newsletter-section"><div className="newsletter-inner page-wrap"><div className="eyebrow light">The GOLD LUXURY HAIR letter</div><h2>Stay in the know,<br /><em>beautifully.</em></h2><p>New arrivals, private appointments and considered notes from the atelier — in your inbox, occasionally.</p>{subscribed ? <div className="success-message"><Check size={18} /> You're on the list. Welcome to the atelier.</div> : <form className="newsletter-form" onSubmit={(e) => { e.preventDefault(); setSubscribed(true); }}><Mail size={18} /><input type="email" placeholder="Your email address" required /><button type="submit">Join the letter <ArrowRight size={15} /></button></form>}<div className="newsletter-instagram"><Instagram size={17} /> @goldluxuryhair</div></div></section>
+  </main>;
 }
