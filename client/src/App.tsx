@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Router as WouterRouter } from "wouter";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -36,5 +36,6 @@ function Router() {
 }
 
 export default function App() {
-  return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster /><CartProvider><Router /></CartProvider></TooltipProvider></ThemeProvider></ErrorBoundary>;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster /><CartProvider><WouterRouter base={base}><Router /></WouterRouter></CartProvider></TooltipProvider></ThemeProvider></ErrorBoundary>;
 }

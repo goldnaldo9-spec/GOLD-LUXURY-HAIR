@@ -1,6 +1,29 @@
-# Veloura Hair Atelier
+# GOLD LUXURY HAIR
 
-React / Express / tRPC / Drizzle starter, adapted from the Sandbox web-db-user template.
+Premium human hair and made-to-measure wigs storefront.
+
+The storefront deploys automatically from `main` through `.github/workflows/deploy-pages.yml`.
+
+Published site: https://goldnaldo9-spec.github.io/GOLD-LUXURY-HAIR/
+
+The Vite build uses `/GOLD-LUXURY-HAIR/` as its production base path, and `404.html` is generated as an SPA fallback so direct links remain openable on GitHub Pages.
+
+## Local development
+
+```bash
+pnpm install
+pnpm dev
+```
+
+## Static build
+
+```bash
+pnpm build:static
+```
+
+## Manus runtime
+
+The Manus-managed deployment remains available through the project Preview and server build.
 
 - `pnpm dev`: development server; honors `PORT` (default 3000).
 - `pnpm build` / `pnpm start`: build and serve `dist/index.js` and `dist/public/`.
