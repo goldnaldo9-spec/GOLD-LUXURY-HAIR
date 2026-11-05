@@ -33,10 +33,10 @@ export function SiteFooter() {
   return <footer className="site-footer">
     <div className="footer-quote">“Hair, considered.”</div>
     <div className="footer-grid">
-      <div><div className="footer-brand">GOLD LUXURY HAIR</div><p>Human hair, elevated. A private edit of pieces made to move with you.</p><a className="footer-link" href="mailto:hello@goldluxuryhair.com">hello@goldluxuryhair.com</a></div>
+      <div><div className="footer-brand">GOLD LUXURY HAIR</div><p>Human hair, elevated. A private edit of pieces made to move with you.</p><a className="footer-link" href="mailto:goldnaldo9@gainl.com">goldnaldo9@gainl.com</a></div>
       <div><div className="footer-label">Explore</div><Link href="/shop">Shop all</Link><Link href="/shop?category=New%20arrivals">New arrivals</Link><Link href="/custom">Made-to-measure</Link><Link href="/book">Book a consultation</Link></div>
       <div><div className="footer-label">Client care</div><Link href="/contact">Contact</Link><Link href="/shipping">Shipping & returns</Link><Link href="/care">Hair care guide</Link><Link href="/faq">FAQ</Link></div>
-      <div><div className="footer-label">Follow the atelier</div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a><a href="https://wa.me/440000000000" target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:hello@goldluxuryhair.com">Email us</a></div>
+      <div><div className="footer-label">Follow the atelier</div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a><a href="https://wa.me/440000000000" target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:goldnaldo9@gainl.com">Email us</a></div>
     </div>
     <div className="footer-bottom"><span>© 2026 GOLD LUXURY HAIR</span><span>Privacy · Terms · Cookies</span><span>Made with intention in London</span></div>
   </footer>;
